@@ -10,7 +10,7 @@ spec:
   containers:
   - name: catalogue
     imagePullPolicy: Always
-    image: vishnu7674/catalogue:v1
+    image: vishnu7674/catalogue:k8
     ports:
       - containerPort: 27017
 ---
