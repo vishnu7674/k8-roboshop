@@ -1,5 +1,13 @@
 ---
 apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: catalogue-config
+  namespace: roboshop
+data:
+  MONGO_URL: "mongodb://mongodb:80/catalogue"
+---  
+apiVersion: v1
 kind: Pod
 metadata:
   name: catalogue
@@ -11,18 +19,28 @@ spec:
   - name: catalogue
     imagePullPolicy: Always
     image: vishnu7674/catalogue:k8
+    envFrom:
+    - configMapRef:
+       name: catalogue-config
     ports:
       - containerPort: 8080
+    resources:
+     requests:
+      cpu: "100m"
+      memory: "128Mi"
+     limits:
+      cpu: "100m"
+      memory: "128Mi"
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: catalogue-service
+  name: catalogue
 spec:
   selector:
     name: catalogue
     tier: app
   ports:
     - protocol: TCP
-      port: 8080
+      port: 80
       targetPort: 8080
