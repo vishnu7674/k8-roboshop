@@ -4,8 +4,8 @@ kind: ConfigMap
 metadata:
   name: mysql-config
 data:
-  MONGOMYSQL_ALLOW_EMPTY_PASSWORD_URL: "yes"
   MYSQL_DATABASE: "cities"
+  MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
 ---
 apiVersion: v1
 kind: Secret
