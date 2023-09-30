@@ -5,7 +5,7 @@ metadata:
   name: web
   labels:
     name: web
-    tier: frontend
+    tier: web
 spec:
   containers:
   - name: web
@@ -29,7 +29,7 @@ spec:
   type: LoadBalancer
   selector:
     name: web
-    tier: frontend
+    tier: web
   ports:
     - protocol: TCP
       port: 80
