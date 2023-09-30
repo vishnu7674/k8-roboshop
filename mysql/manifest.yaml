@@ -14,7 +14,7 @@ type: Opaque
 data:
   MYSQL_USER: c2hpcHBpbmc=
   MYSQL_PASSWORD: c2VjcmV0
-  MYSQL_ROOT_PASSWORD: cm9vdDEyMw0=
+  MYSQL_ROOT_PASSWORD: cm9vdDEyMw==
 ---
 apiVersion: v1
 kind: Pod
@@ -29,6 +29,12 @@ spec:
     imagePullPolicy: Always
     image: vishnu7674/mysql:k8
     args: ["--secure-auth"]
+    env:
+    - name: MYSQL_ROOT_PASSWORD
+      valueFrom:
+       secretKeyRef:
+        name: mysql-secret
+        Key: MYSQL_ROOT_PASSWORD  
     envFrom:
     - configMapRef:
        name: mysql-config
