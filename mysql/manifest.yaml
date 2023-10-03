@@ -5,6 +5,7 @@ metadata:
   name: mysql-config
 data:
   MYSQL_DATABASE: "cities"
+  MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
 ---
 apiVersion: v1
 kind: Secret
@@ -13,8 +14,7 @@ metadata:
 type: Opaque
 data:
   MYSQL_USER: c2hpcHBpbmc=
-  MYSQL_PASSWORD: c2VjcmV0
-  MYSQL_ROOT_PASSWORD: cm9vdDEyMw==
+  MYSQL_PASSWORD: c2VjcmVO
 ---
 apiVersion: v1
 kind: Pod
@@ -60,5 +60,5 @@ spec:
     tier: db
   ports:
     - protocol: TCP
-      port: 80
+      port: 3306
       targetPort: 3306
