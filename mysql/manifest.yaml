@@ -27,8 +27,7 @@ spec:
   containers:
   - name: mysql
     imagePullPolicy: Always
-    image: vishnu7674/mysql:k8
-    args: ["--secure-auth"]  
+    image: vishnu7674/mysql:k8 
     envFrom:
     - configMapRef:
        name: mysql-config
